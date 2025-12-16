@@ -295,7 +295,18 @@ MyFixedPoint)Math.Min((double)À,(double)º);}if(Œ&&À==0){if(!ő.Value.Á.CanI
 .Á,ĭ,null,true)){ň($"Moved {Ë.ō}({Ë.Ķ}) from {ĺ.CustomName} to {ő.Value.ĺ.CustomName}");}}else{if(!ő.Value.Á.
 CanItemsBeAdded(µ,ª.Type))continue;if(Á.TransferItemTo(ő.Value.Á,ĭ,null,true,µ)){ň(
 $"Moved {µ}x{Ë.ō}({Ë.Ķ}) from {ĺ.CustomName} to {ő.Value.ĺ.CustomName}");}}}Ò=7;if(!k.ContainsKey(Ë.Ķ))continue;foreach(var Ŕ in k[Ë.Ķ]){Ø++;if(Ø%10==9)yield return true;if(Ŕ==null)continue;Ò
-=8;if(j.ContainsKey(ĺ)&&j[ĺ].Ľ.Contains(Ë.Ķ)&&j[ĺ].e>=Ŕ.e)continue;Â=Ŕ.Á;if(Â==null)continue;if(!Á.CanTransferItemTo(Â,ª.
+=8;bool sourceIsStock = ĺ.CustomName.ī(StockContainerTags);
+bool targetIsStock = Ŕ.ĺ.CustomName.ī(StockContainerTags);
+
+// Only block same-category transfers when NEITHER side is a stock container
+if(!sourceIsStock && !targetIsStock)
+{
+    if(j.ContainsKey(ĺ)
+        && j[ĺ].Ľ.Contains(Ë.Ķ)
+        && j[ĺ].e >= Ŕ.e)
+        continue;
+}
+Â=Ŕ.Á;if(Â==null)continue;if(!Á.CanTransferItemTo(Â,ª.
 Type))continue;if(!Â.CanItemsBeAdded(1,ª.Type))continue;Ò=9;if(À>0){if(Á.TransferItemTo(Â,ĭ,null,true,µ)){ň(
 $"Moved {µ}x{Ë.ō}({Ë.Ķ}) from {ĺ.CustomName} to {Ŕ.ĺ.CustomName}");break;}}else{if(Á.TransferItemTo(Â,ĭ,null,true)){ň($"Moved {Ë.ō}({Ë.Ķ}) from {ĺ.CustomName} to {Ŕ.ĺ.CustomName}");
 break;}}}}}Ð=10;Ò=0;Ñ="Updating Item Counts";foreach(var ŕ in Ç){ŕ.Value.ŏ=0;ŕ.Value.Ŗ=0;}foreach(var z in Æ){Æ[z.Key].ŏ=0;Æ[
